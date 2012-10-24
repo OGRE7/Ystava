@@ -1,4 +1,8 @@
 Ystava::Application.routes.draw do
+  get "pages_statiques/a_propos"
+
+  get "pages_statiques/contact"
+
   resources :contributions
 
   resources :utilisateurs
