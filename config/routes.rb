@@ -1,4 +1,6 @@
 Ystava::Application.routes.draw do
+  resources :contributions
+
   resources :utilisateurs
 
   # The priority is based upon order of creation:

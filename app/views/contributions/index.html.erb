@@ -1,0 +1,27 @@
+<h1>Listing contributions</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Somme</th>
+    <th>Utilisateur</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contributions.each do |contribution| %>
+  <tr>
+    <td><%= contribution.description %></td>
+    <td><%= contribution.somme %></td>
+    <td><%= contribution.utilisateur_id %></td>
+    <td><%= link_to 'Show', contribution %></td>
+    <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
+    <td><%= link_to 'Destroy', contribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contribution', new_contribution_path %>
