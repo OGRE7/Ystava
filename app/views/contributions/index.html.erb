@@ -3,6 +3,7 @@
 <table class="table">
   <tr>
     <th>Description</th>
+    <th></th>
     <th>Somme</th>
     <th>Participant</th>
     <th></th>
@@ -12,8 +13,9 @@
 <% @contributions.each do |contribution| %>
   <tr>
     <td><%= contribution.description %></td>
-    <td><%= contribution.somme %></td>
-    <td><%= contribution.utilisateur_id %></td>
+    <td></td>
+    <td><%= number_to_currency(contribution.somme, format: "%n %u") %></td>
+    <td><%= contribution.utilisateur.name %></td>
     <td>
       <%= link_to edit_contribution_path(contribution) do %>
         <i class="icon-pencil"></i>
@@ -30,6 +32,30 @@
     </td>
   </tr>
 <% end %>
+  <tr>
+    <td></td>
+    <td>TOTAL</td>
+    <td>
+      <b>
+        <%= number_to_currency(Contribution.sum("somme"), format: "%n %u") %>
+      </b>
+    </td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>TOTAL PAR PERSONNE</td>
+    <td>
+      <b>
+        <%= number_to_currency(a_payer, format: "%n %u") %>
+      </b>
+    </td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 <br />
