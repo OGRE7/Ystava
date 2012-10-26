@@ -4,6 +4,8 @@
   <tr>
     <th></th>
     <th>Nom</th>
+    <th>Contributions</th>
+    <th>Balance</th>
     <th>Email</th>
     <th></th>
     <th></th>
@@ -12,7 +14,9 @@
 <% @utilisateurs.each do |utilisateur| %>
   <tr>
     <td><i class="icon-user"></i></td>
-    <td><%= link_to utilisateur.name, edit_utilisateur_path(utilisateur) %></td>
+    <td><%= link_to utilisateur.name, utilisateur_path(utilisateur) %></td>
+    <td><%= utilisateur.somme_contributions %> contribution(s) pour un total de <b><%= utilisateur.total_contributions %></b></td>
+    <td class="<%= style_argent(utilisateur.balance) %>"><%= utilisateur.balance %></td>
     <td><%= utilisateur.email %></td>
     <td>
       <%= link_to edit_utilisateur_path(utilisateur) do %>
