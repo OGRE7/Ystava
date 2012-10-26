@@ -3,6 +3,9 @@ class Contribution < ActiveRecord::Base
   
   belongs_to :utilisateur
   
+  validates :description, presence: true
+  validates :somme, presence: true
+  
   def description_courte
     if self.description.length > 20
       return self.description[0..20]+"..."
