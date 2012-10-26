@@ -14,10 +14,19 @@
 <% @utilisateurs.each do |utilisateur| %>
   <tr>
     <td><i class="icon-user"></i></td>
+    
     <td><%= link_to utilisateur.name, utilisateur_path(utilisateur) %></td>
-    <td><%= utilisateur.somme_contributions %> contribution(s) pour un total de <b><%= utilisateur.total_contributions %></b></td>
+    
+    <td>
+      <b><%= utilisateur.somme_contributions %> contribution(s)</b>
+      pour un total de 
+      <b><%= number_to_currency(utilisateur.total_contributions) %></b>
+    </td>
+    
     <td class="<%= style_argent(utilisateur.balance) %>"><%= number_to_currency(utilisateur.balance, format: "%n %u") %></td>
+    
     <td><%= utilisateur.email %></td>
+    
     <td>
       <%= link_to edit_utilisateur_path(utilisateur) do %>
         <i class="icon-pencil"></i>
