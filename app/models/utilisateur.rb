@@ -1,7 +1,7 @@
 class Utilisateur < ActiveRecord::Base
   attr_accessible :email, :name
   
-  has_many :contributions
+  has_many :contributions, dependent: :destroy
   
   validates :name,  presence: true, :length => { :maximum => 20 },
                     uniqueness: { case_sensitive: false }
