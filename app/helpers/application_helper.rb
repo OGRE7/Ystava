@@ -15,7 +15,7 @@ module ApplicationHelper
   end
   
   def style_argent(somme)
-    somme >= 0 ? "somme_positive" : "somme_negative"
+    somme <= 0 ? "somme_positive" : "somme_negative"
   end
   
 end
