@@ -44,8 +44,8 @@ class UtilisateursController < ApplicationController
 
     respond_to do |format|
       if @utilisateur.save
-        format.html { redirect_to @utilisateur, notice: 'Utilisateur was successfully created.' }
-        format.json { render json: @utilisateur, status: :created, location: @utilisateur }
+        format.html { redirect_to utilisateurs_url, notice: "#{@utilisateur.name} est maintenant dans la liste." }
+        format.json { render json: utilisateurs_path, status: :created, location: @utilisateur }
       else
         format.html { render action: "new" }
         format.json { render json: @utilisateur.errors, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class UtilisateursController < ApplicationController
 
     respond_to do |format|
       if @utilisateur.update_attributes(params[:utilisateur])
-        format.html { redirect_to @utilisateur, notice: 'Utilisateur was successfully updated.' }
+        format.html { redirect_to utilisateurs_url, notice: "Modifications de #{@utilisateur.name} prisent en compte." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,10 +73,11 @@ class UtilisateursController < ApplicationController
   # DELETE /utilisateurs/1.json
   def destroy
     @utilisateur = Utilisateur.find(params[:id])
+    nom = @utilisateur.name
     @utilisateur.destroy
 
     respond_to do |format|
-      format.html { redirect_to utilisateurs_url }
+      format.html { redirect_to utilisateurs_url, notice: "#{nom} n'est plus." }
       format.json { head :no_content }
     end
   end

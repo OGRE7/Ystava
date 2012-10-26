@@ -44,7 +44,7 @@ class ContributionsController < ApplicationController
 
     respond_to do |format|
       if @contribution.save
-        format.html { redirect_to @contribution, notice: 'Contribution was successfully created.' }
+        format.html { redirect_to contributions_url, notice: 'Nouvelle contribution prise en compte.' }
         format.json { render json: @contribution, status: :created, location: @contribution }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class ContributionsController < ApplicationController
 
     respond_to do |format|
       if @contribution.update_attributes(params[:contribution])
-        format.html { redirect_to @contribution, notice: 'Contribution was successfully updated.' }
+        format.html { redirect_to contributions_url, notice: 'La modification est prise en compte.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -5,7 +5,6 @@ class Utilisateur < ActiveRecord::Base
   
   validates :name,  presence: true, :length => { :maximum => 20 },
                     uniqueness: { case_sensitive: false }
-  validates :email, uniqueness: { case_sensitive: false }
   
   def somme_contributions
     self.contributions.count
