@@ -1,11 +1,39 @@
-<p id="notice"><%= notice %></p>
+
+
+<h1><%= @utilisateur.name %> </h1>
 
 <p>
-  <b>Name:</b>
-  <%= @utilisateur.name %>
+    
+  <% if !@utilisateur.email.empty? %>
+
+      Email:
+      <a href="mailto:<%= @utilisateur.email %>">
+        <%= @utilisateur.email %>
+      </a> - 
+
+  <% end %>
+  <%= link_to "Modifier #{@utilisateur.name}",  edit_utilisateur_path(@utilisateur) %>
+    
 </p>
 
-<p>
-  <b>Email:</b>
-  <%= @utilisateur.email %>
-</p>
+<dl class="dl-horizontal">
+  
+  <% !@utilisateur.contributions.each do |contribution| %>
+
+    <dt><%= number_to_currency(contribution.somme) %></dt>
+    <dd><%= contribution.description %></dd>
+    
+  <% end %>
+    
+    <dt></dt>
+    <dd>
+      <%= link_to "Ajouter une contribution", new_contribution_path %>
+    </dd>
+    
+    <dt></dt>
+    <dd>---</dd>
+    
+    <dt><%= number_to_currency(@utilisateur.contributions.sum("somme")) %></dt>
+    <dd><b>TOTAL</b></dd>
+    
+</dl>
