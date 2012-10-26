@@ -26,7 +26,7 @@
 
   <div class="field">
     <%= f.label :utilisateur_id %>
-    <%= f.number_field :utilisateur_id %>
+    <%= select("contribution", "utilisateur_id", Utilisateur.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
 
   <div class="actions">
