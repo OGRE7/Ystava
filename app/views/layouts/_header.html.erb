@@ -5,10 +5,10 @@
       <h1 id="app-titre">Ystava</h1>
         <nav>
           <ul class="nav">
-            <li><%= link_to "Résumé",    '#' %></li>
-            <li><%= link_to "Liste des participants",    '#' %></li>
-            <li><%= link_to "Ajouter une contribution", '#' %></li>
-            <li><%= link_to "Liste des contribution", '#' %></li>
+            <li><%= link_to "Résumé", root_path %></li>
+            <li><%= link_to "Liste des participants", utilisateurs_path %></li>
+            <li><%= link_to "Ajouter une contribution", new_contribution_path %></li>
+            <li><%= link_to "Liste des contribution", contributions_path %></li>
           </ul>
         </nav>
       </div>

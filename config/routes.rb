@@ -1,9 +1,10 @@
 Ystava::Application.routes.draw do
-  get "pages_statiques/a_propos"
-
-  get "pages_statiques/contact"
   
-  get "/accueil/index"
+  root :to => "accueil#index"
+  
+  match '/a_propos', to: 'pages_statiques#a_propos'
+  match '/contact', to: 'pages_statiques#contact'
+  match '/', to: 'accueil#index'
 
   resources :contributions
 
