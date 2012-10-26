@@ -12,18 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :description do %>
+      Description de la contribution:
+    <% end %>
+    <%= f.text_area :description, :size => "24x6" %>
   </div>
   <div class="field">
-    <%= f.label :somme %><br />
+    <%= f.label :somme  do %>
+      Somme (exemple : 20.55) :
+    <% end %> 
     <%= f.text_field :somme %>
   </div>
   <div class="field">
-    <%= f.label :utilisateur_id %><br />
+    <%= f.label :utilisateur_id %>
     <%= f.number_field :utilisateur_id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Enregistrer !" %>
   </div>
 <% end %>

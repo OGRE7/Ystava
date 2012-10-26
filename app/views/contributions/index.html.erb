@@ -1,11 +1,10 @@
-<h1>Listing contributions</h1>
+<h1>Liste des contributions</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Description</th>
     <th>Somme</th>
-    <th>Utilisateur</th>
-    <th></th>
+    <th>Participant</th>
     <th></th>
     <th></th>
   </tr>
@@ -15,13 +14,26 @@
     <td><%= contribution.description %></td>
     <td><%= contribution.somme %></td>
     <td><%= contribution.utilisateur_id %></td>
-    <td><%= link_to 'Show', contribution %></td>
-    <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
-    <td><%= link_to 'Destroy', contribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to edit_contribution_path(contribution) do %>
+        <i class="icon-pencil"></i>
+      <% end %>
+    </td>
+    <td>
+      <b>
+        <%= link_to contribution, method: :delete,
+            data: { confirm: "Êtes vous sûr de vouloir supprimer \"#{contribution.description_courte}\" ? (suppréssion définitive)" },
+            title: "Supprimer le participant" do %>
+          <i class="icon-remove"></i>
+        <% end %>
+      </b>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Contribution', new_contribution_path %>
+<%= link_to new_contribution_path do %>
+  <i class="icon-plus"></i> Ajouter une contribution
+<% end  %>

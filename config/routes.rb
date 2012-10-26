@@ -2,6 +2,8 @@ Ystava::Application.routes.draw do
   get "pages_statiques/a_propos"
 
   get "pages_statiques/contact"
+  
+  get "/accueil/index"
 
   resources :contributions
 
