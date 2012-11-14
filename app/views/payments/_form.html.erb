@@ -1,7 +1,7 @@
 <%= form_for(@payment) do |f| %>
   <% if @payment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+      <h2><%= pluralize(@payment.errors.count, "erreur") %> empèche(nt) l'enregistrement :</h2>
 
       <ul>
       <% @payment.errors.full_messages.each do |msg| %>
@@ -10,13 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :description do %>
-      Description du don:
-    <% end %>
-    <%= f.text_area :description, :size => "24x6" %>
-  </div>
 
   <div class="field">
     <%= f.label :somme  do %>
@@ -38,7 +31,15 @@
     <% end %> 
     <%= select("payment", "vers_utilisateur_id", Utilisateur.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
+
+  <div class="field">
+    <%= f.label :description do %>
+      infos supplémentaires (facultatif):
+    <% end %>
+    <%= f.text_area :description, :size => "24x6" %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Enregistrer !" %>
   </div>
 <% end %>
