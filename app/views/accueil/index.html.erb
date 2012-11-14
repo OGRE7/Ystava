@@ -1,1 +1,112 @@
 <h1>Résumé</h1>
+
+<p class="text-success"><%= notice %></p>
+
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Nom</th>
+    <th>Actions</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @utilisateurs.each do |utilisateur| %>
+  
+  <!-- LIGNE DOIT PAYER -->
+  
+  <tr class="mainLine">
+    <td><i class="icon-user"></i></td>
+    
+    <td><%= link_to utilisateur.name, utilisateur_path(utilisateur) %></td>
+    
+    <td>
+    </td>
+    
+    <td class="">
+    </td>
+    
+    <td class="<%= style_argent(utilisateur.total_du_initial) %>">
+      <%= look_argent(utilisateur.total_du_initial) %>
+    </td>
+  </tr>
+  
+  <!-- LIGNE CONTRIBUTIONS -->
+  <% nb_contributions = utilisateur.somme_contributions %>
+  <% if(nb_contributions >= 1 ) %>
+    <tr class="detailLine">
+      <td></td>
+      <td></td>
+
+      <td class="description">
+        A fait <%= nb_contributions %> contribution(s) pour un total de
+        <%= look_argent(utilisateur.total_contributions) %>
+      </td>
+
+      <td class="">
+        - <%= look_argent(utilisateur.total_contributions) %>
+      </td>
+
+      <td class="<%= style_argent(utilisateur.balance) %>">
+        = <%= look_argent(utilisateur.balance) %>
+      </td>
+    </tr>
+  <% end %>
+    
+  <!-- LIGNES DONS DONNES -->
+  
+  <% balance = utilisateur.balance %>
+  <% utilisateur.payments.each do |payment| %>
+  
+  <% balance -= payment.somme %>
+  
+    <tr class="detailLine">
+      <td></td>
+      <td></td>
+
+      <td class="description">
+        A donné <%= look_argent(payment.somme) %> à <%= payment.vers.name %>
+      </td>
+
+      <td class="">
+        - <%= look_argent(payment.somme) %>
+      </td>
+
+      <td class="<%= style_argent(balance) %>">
+        = <%= look_argent(balance) %>
+      </td>
+    </tr>
+    
+  <% end %>
+    
+  <!-- LIGNES DONS RECUS -->
+  <% utilisateur.payments_recus.each do |payment| %>
+  
+  <% balance += payment.somme %>
+  
+    <tr class="detailLine">
+      <td></td>
+      <td></td>
+
+      <td class="description">
+        A reçu <%= look_argent(payment.somme) %> de <%= payment.vers.name %>
+      </td>
+
+      <td class="">
+        + <%= look_argent(payment.somme) %>
+      </td>
+
+      <td class="<%= style_argent(balance) %>">
+        = <%= look_argent(balance) %>
+      </td>
+    </tr>
+  <% end %>
+  
+<% end %>
+</table>
+
+<br />
+
+<%= link_to new_utilisateur_path do %>
+  <i class="icon-plus"></i>Ajouter un nouveau participant
+<%  end %>

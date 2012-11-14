@@ -18,4 +18,8 @@ module ApplicationHelper
     somme <= 0 ? "somme_positive" : "somme_negative"
   end
   
+  def look_argent(somme)
+    number_to_currency(somme, format: "%n %u")
+  end
+  
 end

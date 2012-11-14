@@ -12,20 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :description do %>
+      Description du don:
+    <% end %>
+    <%= f.text_area :description, :size => "24x6" %>
   </div>
+
   <div class="field">
-    <%= f.label :somme %><br />
+    <%= f.label :somme  do %>
+      Somme du don (exemple : 20.55) :
+    <% end %> 
     <%= f.text_field :somme %>
   </div>
+
   <div class="field">
-    <%= f.label :utilisateur_id %><br />
-    <%= f.number_field :utilisateur_id %>
+    <%= f.label :utilisateur_id do %>
+      Cette personne:
+    <% end %> 
+    <%= select("payment", "utilisateur_id", Utilisateur.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
+
   <div class="field">
-    <%= f.label :vers_utilisateur_id %><br />
-    <%= f.number_field :vers_utilisateur_id %>
+    <%= f.label :vers_utilisateur_id do %>
+      a donnée à cette personne:
+    <% end %> 
+    <%= select("payment", "vers_utilisateur_id", Utilisateur.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
   <div class="actions">
     <%= f.submit %>
