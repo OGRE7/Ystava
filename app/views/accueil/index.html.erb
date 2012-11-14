@@ -1,15 +1,8 @@
-<h1>Résumé</h1>
+<h1>Détails</h1>
 
 <p class="text-success"><%= notice %></p>
 
 <table class="table">
-  <tr>
-    <th></th>
-    <th>Nom</th>
-    <th>Actions</th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @utilisateurs.each do |utilisateur| %>
   
@@ -89,7 +82,7 @@
       <td></td>
 
       <td class="description">
-        A reçu <%= look_argent(payment.somme) %> de <%= payment.vers.name %>
+        A reçu <%= look_argent(payment.somme) %> de <%= payment.utilisateur.name %>
       </td>
 
       <td class="">
