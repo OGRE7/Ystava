@@ -1,5 +1,7 @@
 Ystava::Application.routes.draw do
   
+  resources :payments
+
   root :to => "accueil#index"
   
   match '/a_propos', to: 'pages_statiques#a_propos'
