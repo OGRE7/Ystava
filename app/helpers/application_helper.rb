@@ -19,7 +19,7 @@ module ApplicationHelper
   end
   
   def look_argent(somme)
-    number_to_currency(somme, format: "%n %u")
+    number_to_currency(somme.round(0), format: "%n %u")
   end
   
 end

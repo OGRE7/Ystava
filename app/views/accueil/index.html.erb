@@ -16,10 +16,13 @@
     <td>
     </td>
     
-    <td class="">
+    <td>
     </td>
     
-    <td class="<%= style_argent(utilisateur.total_du_initial) %>">
+    <td>
+    </td>
+    
+    <td class="<%= style_argent(utilisateur.total_du_initial) %> money">
       <%= look_argent(utilisateur.total_du_initial) %>
     </td>
   </tr>
@@ -36,12 +39,14 @@
         <%= look_argent(utilisateur.total_contributions) %>
       </td>
 
-      <td class="">
+      <td class="money">
         - <%= look_argent(utilisateur.total_contributions) %>
       </td>
+      
+      <td class="money">=</td>
 
-      <td class="<%= style_argent(utilisateur.balance) %>">
-        = <%= look_argent(utilisateur.balance) %>
+      <td class="<%= style_argent(utilisateur.balance) %> money">
+        <%= look_argent(utilisateur.balance) %>
       </td>
     </tr>
   <% end %>
@@ -61,12 +66,14 @@
         A donné <%= look_argent(payment.somme) %> à <%= payment.vers.name %>
       </td>
 
-      <td class="">
+      <td class="money">
         - <%= look_argent(payment.somme) %>
       </td>
+      
+      <td class="money">=</td>
 
-      <td class="<%= style_argent(balance) %>">
-        = <%= look_argent(balance) %>
+      <td class="<%= style_argent(balance) %> money">
+        <%= look_argent(balance) %>
       </td>
     </tr>
     
@@ -85,12 +92,14 @@
         A reçu <%= look_argent(payment.somme) %> de <%= payment.utilisateur.name %>
       </td>
 
-      <td class="">
+      <td class="money">
         + <%= look_argent(payment.somme) %>
       </td>
+      
+      <td class="money">=</td>
 
-      <td class="<%= style_argent(balance) %>">
-        = <%= look_argent(balance) %>
+      <td class="<%= style_argent(balance) %> money">
+        <%= look_argent(balance) %>
       </td>
     </tr>
   <% end %>
@@ -104,11 +113,13 @@
     <td class="description">
     </td>
 
-    <td class="">
+    <td class="money">
       <b>TOTAL</b>
     </td>
+      
+      <td class="money"></td>
 
-    <td class="<%= style_argent(balance) %>">
+    <td class="<%= style_argent(balance) %> money">
       <b><%= look_argent(balance) %></b>
     </td>
   </tr>
